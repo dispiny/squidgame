@@ -1,21 +1,18 @@
-from src.sound import sound
-from random import * 
-from src.web import api
-from src.sound import move_effect
-from multiprocessing import Pool
-import os
+from modules.sound import sound
+from modules.sound import control_files
+import os 
 
+if __name__ == '__main__':
+    sound_track = ["doll_sound", "game_round", "main_theme", "original_sound"]
+    src = "/Users/sysop/Documents/project/squidgame/modules/sound/effect/"
+    des = "/tmp/squid/effects/"
 
-def speak():
-    rate = randint(2, 4)
-    print('rate '+ str(rate) + 'x')
-    sound.play_sound(rate)
-
-def laser():
-    sound.play_laser()
-
-if __name__ == '__main__': 
-    username = format(os.getlogin())
+    if os.path.isdir(des):
+        print("isdir true")
+        control_files.move_file(sound_track, src, des)
+    else:
+        print('isdir false')
+        control_files.create_file(des)
+        control_files.move_file(sound_track, src, des)
     
-    move_effect.move(username)
-    sound.play(username)
+    sound.play(des, sound_track[2])
