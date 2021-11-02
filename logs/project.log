@@ -1,0 +1,37 @@
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://172.20.10.6:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 978-607-248
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "[36mGET /main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "[36mGET /style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "[36mGET /main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "[36mGET /style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "[36mGET /style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:04:35] "[36mGET /main.js HTTP/1.1[0m" 304 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://172.20.10.6:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 978-607-248
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:05:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:05:16] "[36mGET /main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:05:16] "[36mGET /style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:05:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:05:17] "[36mGET /style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:05:17] "[36mGET /main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in '/Users/sysop/Documents/project/squidgame/api.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 978-607-248
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:29] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:29] "[33mGET /style.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:31] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:31] "[33mGET /style.css HTTP/1.1[0m" 404 -
