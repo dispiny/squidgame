@@ -12,23 +12,7 @@ api = Api(app)
 @app.route('/')
 def index():
     return render_template('index.html')
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'templates'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-# @app.route('/main.js')
-# def main_js():
-#     return send_from_directory(os.path.join(app.root_path, 'templates'),
-#                                'main.js')
-
-# @app.route('/style.css')
-# def style():
-#     return send_from_directory(os.path.join(app.root_path, 'templates'),
-#                                'style.css')
-
-
+    
 class PlayerStatus(Resource):
     def get(self):
         try:

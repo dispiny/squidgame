@@ -28,32 +28,32 @@ let track = document.createElement('audio');
 let All_song = [
    {
      name: "Trumpet Concerto 3",
-     path: "./musics/main_classic.mp3",
-     img: "main.jpg",
+     path: "static//musics/main_classic.mp3",
+     img: "static/main.jpg",
      singer: "Franz Joseph Haydn"
    },
    {
      name: "Needles and Dalgona",
-     path: "./musics/game_round.mp3",
-     img: "main.jpg",
+     path: "static//musics/game_round.mp3",
+     img: "static/main.jpg",
      singer: "박민주"
    },
    {
      name: "Fly me to the moon",
-     path: "./musics/jazz.mp3",
-     img: "main.jpg",
+     path: "static//musics/jazz.mp3",
+     img: "static/main.jpg",
      singer: "신주원"
    },
    {
      name: "Way Back then",
-     path: "./musics/main_theme.mp3",
-     img: "main.jpg",
+     path: "static//musics/main_theme.mp3",
+     img: "static/main.jpg",
      singer: "정재일"
    },
    {
      name: "Pink Soldiers",
-     path: "./musics/original_sound.mp3",
-     img: "main.jpg",
+     path: "static//musics/original_sound.mp3",
+     img: "static/main.jpg",
      singer: "23"
    }
 ];

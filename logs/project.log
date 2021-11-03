@@ -35,3 +35,91 @@ INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:29] "[33mGET /style.css HTTP/1.1
 INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:31] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:31] "[33mGET /main.js HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 00:08:31] "[33mGET /style.css HTTP/1.1[0m" 404 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.123.62:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 978-607-248
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:18] "[33mGET /style.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:18] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:18] "GET /favicon.ico HTTP/1.1" 200 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.123.62:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 978-607-248
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:52] "[33mGET /style.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:52] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:53] "[33mGET /style.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 08:36:53] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:45:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:45:49] "[33mGET /style.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:45:49] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:45:53] "[33mGET /main.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:47:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:47:15] "[33mGET /static/script.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:47:15] "GET /static/style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:01] "[33mGET /static/script.js HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:22] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:22] "[33mGET /main.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:22] "[33mGET /musics/main_classic.mp3 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:27] "[33mGET /main.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:27] "[33mGET /musics/game_round.mp3 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:39] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:39] "[33mGET /main.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:49:39] "[33mGET /musics/main_classic.mp3 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:04] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:04] "[33mGET /musics/main_classic.mp3 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:04] "GET /static/main.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:24] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:24] "[36mGET /static/main.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:24] "[35m[1mGET /static/musics/main_classic.mp3 HTTP/1.1[0m" 206 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:25] "[35m[1mGET /static/musics/main_classic.mp3 HTTP/1.1[0m" 206 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:28] "[33mGET /main.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:28] "[35m[1mGET /static/musics/game_round.mp3 HTTP/1.1[0m" 206 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:30] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:30] "[36mGET /static/main.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:30] "[35m[1mGET /static/musics/main_classic.mp3 HTTP/1.1[0m" 206 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:50:31] "[33mGET /main.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:10] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:10] "[32mGET /static//musics/main_classic.mp3 HTTP/1.1[0m" 308 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:10] "[36mGET /static/main.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:10] "[35m[1mGET /static/musics/main_classic.mp3 HTTP/1.1[0m" 206 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:12] "[32mGET /static//musics/game_round.mp3 HTTP/1.1[0m" 308 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:12] "[35m[1mGET /static/musics/game_round.mp3 HTTP/1.1[0m" 206 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.123.62:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 978-607-248
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:41] "GET /static/script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:41] "[33mGET /static/main.jpg HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:41] "[32mGET /static//musics/main_classic.mp3 HTTP/1.1[0m" 308 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:41] "[35m[1mGET /static/musics/main_classic.mp3 HTTP/1.1[0m" 206 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:51] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:51] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:51] "GET /static/main.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Nov/2021 11:51:53] "[35m[1mGET /static/musics/main_classic.mp3 HTTP/1.1[0m" 206 -
