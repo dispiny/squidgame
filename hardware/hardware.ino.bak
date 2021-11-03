@@ -1,0 +1,126 @@
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+#include <Thread.h>
+#include <ThreadController.h>
+#include <Stepper.h>
+
+
+#define SPEAK_BTN 8
+#define P1_BTN 2
+#define P2_BTN 3
+#define P3_BTN 4
+#define P4_BTN 5
+
+ThreadController controll = ThreadController();
+Thread myThread = Thread();
+Thread myThread2 = Thread();
+
+Stepper stepper(200, 8, 9, 10, 11);
+
+void LCD_PRINT_TIME();
+const int ledPin = 13;
+volatile boolean state = true;
+
+// Set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+int min=2, sec=00;
+int sig = 0;
+int playSpeak = 0;
+char ch = ':';
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  
+  lcd.begin();
+  lcd.backlight();
+  
+  Serial.begin(9600); // 시리얼 통신 시작
+
+  myThread.onRun(LCD_PRINT_TIME);
+  myThread2.onRun(PLAYER_BTN_EVENT);
+
+  controll.add(&myThread);
+  controll.add(&myThread2);
+
+  stepper.setSpeed(30);
+}
+
+void loop()
+{
+  myThread.run();
+  myThread2.run();
+
+  controll.run();
+}
+
+void PLAYER_BTN_EVENT() {
+  int speak_readValue = digitalRead(SPEAK_BTN);
+  
+  if (speak_readValue == HIGH) {
+    playSpeak += 1;
+  }
+
+  if (playSpeak == 1){
+      Serial.print("SOUND");
+      Serial.print("1");
+      Serial.println();
+  }
+
+  int p1_readValue = digitalRead(P1_BTN);
+  if (p1_readValue == HIGH) {
+      Serial.println(1);
+  }
+  
+  int p2_readValue = digitalRead(P2_BTN);
+  if (p2_readValue == HIGH) {
+      Serial.println(2);
+  }
+    
+  int p3_readValue = digitalRead(P3_BTN);
+  if (p3_readValue == HIGH) {
+      Serial.println(3);
+  }
+    
+  int p4_readValue = digitalRead(P4_BTN);
+  if (p4_readValue == HIGH) {
+      Serial.println(4);
+  }  
+}
+
+void LCD_PRINT_TIME() {
+  if (sec == 0 && min == 0){
+    lcd.setCursor(4, 0);      // 1번째줄, 0번째열로 커서 이동
+    lcd.print("FINISHED");
+  } else {
+    if(sec == 0)
+    { 
+      sec = 59;
+      min = min - 1;
+    }
+    if(min == 0)
+    {
+      min = 0;
+    }
+    lcd.setCursor(4, 0);      // 1번째줄, 0번째열로 커서 이동
+    lcd.print("Time ");
+    lcd.print(min);  // 분
+    lcd.print(ch);
+    lcd.print(sec);  // 초
+    delay(1000);
+    sec--;
+    lcd.clear();
+  }  
+}
+
+void LCD_PRINT_FAILE_PLAYER(int number) {  
+    lcd.setCursor(4, 1);
+    lcd.print(number);
+    lcd.setCursor(6, 1);
+    lcd.print("FAILED");
+}
+
+void ledBlink(){
+    digitalWrite(ledPin, state);
+    state = !state;
+}

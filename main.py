@@ -3,7 +3,7 @@ import serial
 # print('serial ' + serial.__version__)
 
 # Set a PORT Number & baud rate
-PORT = 'COM4'
+PORT = '/dev/cu.usbmodem141301'
 BaudRate = 9600
 
 ARD= serial.Serial(PORT,BaudRate)
@@ -37,12 +37,11 @@ while (True):
     SoundPlay = Ardread()
     
     if SoundPlay == 1:
-        # des = "/tmp/squid/effect/"
+        des = "/tmp/squid/effect/"
 
-        # sound.copy_file()
-        # doll_re = sound.play(des, "doll_sound")
+        sound.copy_file()
+        doll_re = sound.play(des, "doll_sound")
 
-        # print(doll_re)
-        print('True')
+        print(doll_re)
     else:
         print('false')
