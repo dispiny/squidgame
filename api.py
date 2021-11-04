@@ -13,6 +13,10 @@ api = Api(app)
 def index():
     return render_template('index.html')
     
+@app.route('/score')
+def score():
+    return render_template('score.html')
+
 class PlayerStatus(Resource):
     def get(self):
         try:
@@ -22,13 +26,14 @@ class PlayerStatus(Resource):
             args = parser.parse_args()
             result = args['player']
             if args['status'] == 1: # 0 생존, 1 탈락
-                return {'result': str(result) + '번 탈락'}
-            else:
-                return {'result': str(result) + '번 생존'}
+                return {'number': str(result), 'status': 'Failed'}
+            elif args['status'] == 0:
+                return {'number': str(result), 'status': 'Save'}
         except Exception as e:
             return {'error': str(e)}
 
 api.add_resource(PlayerStatus, '/player')
 
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='80', debug=True)
