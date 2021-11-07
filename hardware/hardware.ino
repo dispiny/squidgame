@@ -8,6 +8,10 @@
 #define P2_BTN 3
 #define P3_BTN 4
 #define P4_BTN 5
+#define P1_MOTOR 2                                          
+#define P2_MOTOR 6
+#define P3_MOTOR 10
+#define P4_MOTOR 12
 #define SERVO_PIN 9
 
 Servo servo;
@@ -17,11 +21,15 @@ void LCD_PRINT_TIME();
 // Set the LCD address to 0x27 for a 16 chars and 2 line display
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
+
+int min=2, sec=10;
 int sig = 0;
 int playSpeak = 0;
 int angle = 0;
 
-const int ledPin = 13;
+long rate;
+
+const int ledPin = 11;
 
 char ch = ':';
 
@@ -35,7 +43,12 @@ unsigned long previousMillis3 = 0;
 
 void setup() {
   pinMode(ledPin, OUTPUT);
-    
+  
+  pinMode(P1_BTN, INPUT);
+  pinMode(P2_BTN, INPUT);
+  pinMode(P3_BTN, INPUT);
+  pinMode(P4_BTN, INPUT);
+
   Serial.begin(9600); // 시리얼 통신 시작
   
   lcd.begin();
@@ -43,19 +56,28 @@ void setup() {
 
   servo.attach(SERVO_PIN);
   servo.write(0); 
+
+  lcd.clear();
+  lcd.setCursor(3, 0);
+  lcd.print("WARMING UP");
+  delay(9000);
+  lcd.clear();
+
+  randomSeed(analogRead(0));
 }
 
-int min=2, sec=10;
 
 void loop()
 {
  
   unsigned long currentMillis = millis();
-
+  rate = random(2, 5);
+  
   if (currentMillis - previousMillis >= 1000) {
     previousMillis = currentMillis;
     if (sec == 0 && min == 0){
       LCD_TIME_OUT();
+      exit(0);
     } else {
       if(sec == 0) { 
         sec = 59;
@@ -68,106 +90,103 @@ void loop()
       LCD_PRINT_TIME(sec, min);
     }
   }
-  
-  PLAYER_BTN_EVENT();
+  PLAYER_BTN_EVENT(rate);
 }
 
-void PLAYER_BTN_EVENT() {
-  int speakValue_p1 = 0;
+void SPEAK(int rate) {
+
+    
+}
+
+void PLAYER_BTN_EVENT(int rate) {
+  int speakValue;
+
   int speakValue_p1_fail = 0;
-  
-  int speakValue_p2 = 0;
   int speakValue_p2_fail = 0;
-  
-  int speakValue_p3 = 0;
   int speakValue_p3_fail = 0;
-  
-  int speakValue_p4 = 0;
   int speakValue_p4_fail = 0;
   
   unsigned long currentMillis = millis();
   unsigned long currentMillis1 = millis();
   unsigned long currentMillis2 = millis();
 
-  if (currentMillis - previousMillis1 >= 4000) {
-    previousMillis1 = currentMillis;
+  if (currentMillis - previousMillis1 >= 10000) {
+    previousMillis1 = currentMillis;  
 
-    speakValue_p1 = 1;
-    speakValue_p2 = 1;
-    speakValue_p3 = 1;
-    speakValue_p4 = 1;
+    speakValue = 1;
     
-//    Serial.print("SPEAK");
-    Serial.print("DDDDD");
-    Serial.print("1");
-    Serial.println();
+    Serial.print("MOTOR");
+    servo.write(0); 
+    Serial.print(" angle0");
+    Serial.println();  
+    
+    Serial.print("SPEAK");
+    Serial.print(rate);
+    Serial.println();   
+
+    if ((rate * 1000) == 4000) {
+      delay(1250);  
+    } else if ((rate * 1000) == 3000) {
+      delay(1666);
+    } else if ((rate * 1000) == 2000) {
+      delay(2500);
+    }
     
     servo.write(180); 
     Serial.print("MOTOR");
     Serial.print(" angle180");
     Serial.println();
-  }
-  
-//  if (currentMillis1 - previousMillis2 >= 5000) {
-//    previousMillis2 = currentMillis1;
-//    Serial.println();
-//  }
 
-  if (currentMillis2 - previousMillis3 >= 5000) {
-    previousMillis3 = currentMillis2;
-    Serial.print("MOTOR");
-    servo.write(0); 
-    Serial.print(" angle0");
-    Serial.println();
   }
-  
+    
   int p1_readValue = digitalRead(P1_BTN);
-  if (p1_readValue == HIGH&& speakValue_p1_fail == 1 ) {     
-    Serial.print("player");
-    Serial.println(1);
-  }
-  
-  if (p1_readValue == HIGH && speakValue_p1 == 1) {
+  if (p1_readValue == HIGH && speakValue == 1) {
     Serial.println("FAILEP1");
+    delay(500);
+    digitalWrite(ledPin, HIGH);
+    delay(1000);
+    digitalWrite(ledPin, LOW);
+    digitalWrite(P1_MOTOR, LOW);
     speakValue_p1_fail = 1;
     LCD_PRINT_FAILE_PLAYER(1);
+  } else {
+    digitalWrite(P1_MOTOR, HIGH);
   }
 
   int p2_readValue = digitalRead(P2_BTN);
-  if (p2_readValue == HIGH&& speakValue_p2_fail == 1 ) {     
-    Serial.print("player");
-    Serial.println(2);
-  }
-  
-  if (p2_readValue == HIGH && speakValue_p2 == 1) {
+  if (p2_readValue == HIGH && speakValue == 1) {
     Serial.println("FAILEP2");
+    delay(500);
+    digitalWrite(ledPin, HIGH);
+    delay(1000);
+    digitalWrite(ledPin, LOW);
     speakValue_p2_fail = 1;
     LCD_PRINT_FAILE_PLAYER(2);
   }
-
-  int p3_readValue = digitalRead(P3_BTN);
-  if (p3_readValue == HIGH&& speakValue_p3_fail == 1 ) {     
-    Serial.print("player");
-    Serial.println(3);
-  }
   
-  if (p3_readValue == HIGH && speakValue_p3 == 1) {
+  int p3_readValue = digitalRead(P3_BTN);
+    if (p3_readValue == HIGH && speakValue == 1) {
     Serial.println("FAILEP3");
+    delay(500);
+    digitalWrite(ledPin, HIGH);
+    delay(1000);
+    digitalWrite(ledPin, LOW);
     speakValue_p3_fail = 1;
     LCD_PRINT_FAILE_PLAYER(3);
   }
-
-  int p4_readValue = digitalRead(P4_BTN);
-  if (p4_readValue == HIGH&& speakValue_p4_fail == 1 ) {     
-    Serial.print("player");
-    Serial.println(4);
-  }
   
-  if (p4_readValue == HIGH && speakValue_p4 == 1) {
+  int p4_readValue = digitalRead(P4_BTN);
+  if (p4_readValue == HIGH && speakValue == 1) {
     Serial.println("FAILEP4");
+    delay(500);
+    digitalWrite(ledPin, HIGH);
+    delay(1000);
+    digitalWrite(ledPin, LOW);
     speakValue_p4_fail = 1;
     LCD_PRINT_FAILE_PLAYER(4);
-  }
+  } 
+
+  speakValue = 0;
 }
 
 void LCD_PRINT_TIME(int sec, int min) {
