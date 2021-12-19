@@ -95,14 +95,12 @@ void SPEAK(int rate) {
 void PLAYER_BTN_EVENT(int rate) {
   int speakValue;
 
-  int speakValue_p1_fail = 0;
+  int speakValue_p1_fail = 0;   // Player 1~4 생존여부
   int speakValue_p2_fail = 0;
   int speakValue_p3_fail = 0;
   int speakValue_p4_fail = 0;
   
   unsigned long currentMillis = millis();
-  unsigned long currentMillis1 = millis();
-  unsigned long currentMillis2 = millis();
 
   if (currentMillis - ServopreviousMillis >= 10000) {
     ServopreviousMillis = currentMillis;  
@@ -134,10 +132,10 @@ void PLAYER_BTN_EVENT(int rate) {
   }
     
   int p1_readValue = digitalRead(P1_BTN);
-  if (p1_readValue == HIGH && speakValue == 1) {
-    Serial.println("FAILEP1");
+  if (p1_readValue == HIGH && speakValue == 1) { // 1번 선수 탈락시 동작 
+    Serial.println("FAILEP1");    // Serial에 출력
     delay(500);
-    digitalWrite(ledPin, HIGH);
+    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
     delay(1000);
     digitalWrite(ledPin, LOW);
     digitalWrite(P1_MOTOR, LOW);
@@ -198,7 +196,7 @@ void LCD_TIME_OUT() {
   lcd.print("FINISHED");
 }
     
-void LCD_PRINT_FAILE_PLAYER(int number) {  
+void LCD_PRINT_FAILE_PLAYER(int number) {  // 탈락한 플레이어 출력 
     lcd.setCursor(4, 1);
     lcd.print(number);
     lcd.setCursor(6, 1);
