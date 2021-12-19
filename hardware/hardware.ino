@@ -3,7 +3,6 @@
 #include <Stepper.h>
 #include <Servo.h>
 
-#define SPEAK_BTN 8
 #define P1_BTN 2
 #define P2_BTN 3
 #define P3_BTN 4
@@ -14,18 +13,16 @@
 #define P4_MOTOR 12
 #define SERVO_PIN 9
 
-Servo servo;
+Servo servo;      // Servo 클래스로 servo라는 Object 생성
 
 void LCD_PRINT_TIME();
 
-// Set the LCD address to 0x27 for a 16 chars and 2 line display
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x27, 16, 2);   // LCD 주소 설정
 
 
-int min=2, sec=10;
-int sig = 0;
-int playSpeak = 0;
-int angle = 0;
+int min=3, sec=10;    // LCD 타이머 기본 시간
+int playSpeak = 0;    // 영희 소리 신호 (0 재생 X, 1 재생 O) 
+int angle = 0;          // 서보모터 각도 
 
 long rate;
 
@@ -33,34 +30,31 @@ const int ledPin = 11;
 
 char ch = ':';
 
-volatile boolean ledState = true;
-
-unsigned long previousMillis = 0;
-unsigned long previousMillis1 = 0;
-unsigned long previousMillis2 = 0;
-unsigned long previousMillis3 = 0;
-
+////////////////////////////////////////
+unsigned long LCDpreviousMillis = 0;   // LCD의 상태가 업데이트된 시간을 기록할 변수  
+unsigned long ServopreviousMillis = 0;    // 서보모터의 상태가 업데이트된 시간을 기록할 변수  
+////////////////////////////////////////
 
 void setup() {
   pinMode(ledPin, OUTPUT);
   
-  pinMode(P1_BTN, INPUT);
-  pinMode(P2_BTN, INPUT);
-  pinMode(P3_BTN, INPUT);
-  pinMode(P4_BTN, INPUT);
+  pinMode(P1_BTN, INPUT);     // 2번 핀 입력모드
+  pinMode(P2_BTN, INPUT);     // 3번 핀 입력모드
+  pinMode(P3_BTN, INPUT);     // 4번 핀 입력모드
+  pinMode(P4_BTN, INPUT);     // 5번 핀 입력모드
 
   Serial.begin(9600); // 시리얼 통신 시작
   
-  lcd.begin();
+  lcd.begin();    // LCD의 크기를 설정한다.
   lcd.backlight();
 
-  servo.attach(SERVO_PIN);
-  servo.write(0); 
+  servo.attach(SERVO_PIN);    // 서보모터 사용
+  servo.write(0);   // 서보모터 위치 초기화
 
-  lcd.clear();
+  lcd.clear();    // LCD 화면 클리어
   lcd.setCursor(3, 0);
-  lcd.print("WARMING UP");
-  delay(9000);
+  lcd.print("WARMING UP");    // 게임 준비 화며 
+  delay(9000);    // 9초 대기 
   lcd.clear();
 
   randomSeed(analogRead(0));
@@ -70,14 +64,14 @@ void setup() {
 void loop()
 {
  
-  unsigned long currentMillis = millis();
-  rate = random(2, 5);
+  unsigned long currentMillis = millis();   // ㅅmills 함수사용할 때 현재 값 저장
+  rate = random(2, 5);    // 영희 소리 배속 (랜덤)
   
-  if (currentMillis - previousMillis >= 1000) {
-    previousMillis = currentMillis;
+  if (currentMillis - LCDpreviousMillis >= 1000) {    // LCD 타이머 
+    LCDpreviousMillis = currentMillis;
     if (sec == 0 && min == 0){
       LCD_TIME_OUT();
-      exit(0);
+      exit(0);    // 시간 초과시 프로그램 종료
     } else {
       if(sec == 0) { 
         sec = 59;
@@ -90,7 +84,7 @@ void loop()
       LCD_PRINT_TIME(sec, min);
     }
   }
-  PLAYER_BTN_EVENT(rate);
+  PLAYER_BTN_EVENT(rate);   // 플레이어의 이동 동작
 }
 
 void SPEAK(int rate) {
@@ -110,8 +104,8 @@ void PLAYER_BTN_EVENT(int rate) {
   unsigned long currentMillis1 = millis();
   unsigned long currentMillis2 = millis();
 
-  if (currentMillis - previousMillis1 >= 10000) {
-    previousMillis1 = currentMillis;  
+  if (currentMillis - ServopreviousMillis >= 10000) {
+    ServopreviousMillis = currentMillis;  
 
     speakValue = 1;
     
