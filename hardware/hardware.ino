@@ -124,7 +124,7 @@ void PLAYER_BTN_EVENT(int rate) {
       delay(2500);
     }
     
-    servo.write(180); 
+    servo.write(180);     // 서보모터 회전
     Serial.print("MOTOR");
     Serial.print(" angle180");
     Serial.println();
@@ -146,7 +146,7 @@ void PLAYER_BTN_EVENT(int rate) {
   }
 
   int p2_readValue = digitalRead(P2_BTN);
-  if (p2_readValue == HIGH && speakValue == 1) {
+  if (p2_readValue == HIGH && speakValue == 1) {    // 2번 선수 탈락시 동작
     Serial.println("FAILEP2");
     delay(500);
     digitalWrite(ledPin, HIGH);
@@ -157,7 +157,7 @@ void PLAYER_BTN_EVENT(int rate) {
   }
   
   int p3_readValue = digitalRead(P3_BTN);
-    if (p3_readValue == HIGH && speakValue == 1) {
+    if (p3_readValue == HIGH && speakValue == 1) {    // 3번 선수 탈락시 동작
     Serial.println("FAILEP3");
     delay(500);
     digitalWrite(ledPin, HIGH);
@@ -168,7 +168,7 @@ void PLAYER_BTN_EVENT(int rate) {
   }
   
   int p4_readValue = digitalRead(P4_BTN);
-  if (p4_readValue == HIGH && speakValue == 1) {
+  if (p4_readValue == HIGH && speakValue == 1) {    // 4번 선수 탈락시 동작
     Serial.println("FAILEP4");
     delay(500);
     digitalWrite(ledPin, HIGH);
@@ -190,7 +190,7 @@ void LCD_PRINT_TIME(int sec, int min) {
   lcd.print(sec);  // 초
 }  
 
-void LCD_TIME_OUT() {
+void LCD_TIME_OUT() {   // 타이머 종료시 LCD 에 출력
   lcd.clear();
   lcd.setCursor(4, 0);
   lcd.print("FINISHED");
