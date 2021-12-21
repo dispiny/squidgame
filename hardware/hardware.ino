@@ -7,10 +7,15 @@
 #define P2_BTN 3
 #define P3_BTN 4
 #define P4_BTN 5
-#define P1_MOTOR 2                                          
-#define P2_MOTOR 6
-#define P3_MOTOR 10
-#define P4_MOTOR 12
+#define ledPin 13
+#define P1_MOTOR_A 6                                 
+#define P1_MOTOR_B 7
+#define P2_MOTOR_A 8
+#define P2_MOTOR_B 10
+#define P3_MOTOR_A 11
+#define P3_MOTOR_B 12
+#define P4_MOTOR_A 13
+#define P4_MOTOR_B 1
 #define SERVO_PIN 9
 
 Servo servo;      // Servo 클래스로 servo라는 Object 생성
@@ -25,8 +30,6 @@ int playSpeak = 0;    // 영희 소리 신호 (0 재생 X, 1 재생 O)
 int angle = 0;          // 서보모터 각도 
 
 long rate;
-
-const int ledPin = 11;
 
 char ch = ':';
 
