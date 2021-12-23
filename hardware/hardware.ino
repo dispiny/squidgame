@@ -21,7 +21,7 @@
 Servo servo;      // Servo 클래스로 servo라는 Object 생성
 
 void LCD_PRINT_TIME();
-
+// SCL A5
 LiquidCrystal_I2C lcd(0x27, 16, 2);   // LCD 주소 설정
 
 
@@ -90,11 +90,6 @@ void loop()
   PLAYER_BTN_EVENT(rate);   // 플레이어의 이동 동작
 }
 
-void SPEAK(int rate) {
-
-    
-}
-
 void PLAYER_BTN_EVENT(int rate) {
   int speakValue;
 
@@ -135,52 +130,64 @@ void PLAYER_BTN_EVENT(int rate) {
   }
     
   int p1_readValue = digitalRead(P1_BTN);
+  Serial.println(p1_readValue);
   if (p1_readValue == HIGH && speakValue == 1) { // 1번 선수 탈락시 동작 
     Serial.println("FAILEP1");    // Serial에 출력
+    motor1(1);
     delay(500);
     digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
     delay(1000);
     digitalWrite(ledPin, LOW);
-    digitalWrite(P1_MOTOR, LOW);
     speakValue_p1_fail = 1;
     LCD_PRINT_FAILE_PLAYER(1);
   } else {
-    digitalWrite(P1_MOTOR, HIGH);
+    motor1(0);
   }
 
   int p2_readValue = digitalRead(P2_BTN);
   if (p2_readValue == HIGH && speakValue == 1) {    // 2번 선수 탈락시 동작
-    Serial.println("FAILEP2");
+    Serial.println("FAILEP2");    
+    motor1(1);
     delay(500);
     digitalWrite(ledPin, HIGH);
     delay(1000);
     digitalWrite(ledPin, LOW);
     speakValue_p2_fail = 1;
     LCD_PRINT_FAILE_PLAYER(2);
+  } else {
+    motor2(0);
   }
   
   int p3_readValue = digitalRead(P3_BTN);
     if (p3_readValue == HIGH && speakValue == 1) {    // 3번 선수 탈락시 동작
-    Serial.println("FAILEP3");
+    Serial.println("FAILEP3");    
+    motor1(1);
     delay(500);
     digitalWrite(ledPin, HIGH);
     delay(1000);
     digitalWrite(ledPin, LOW);
     speakValue_p3_fail = 1;
     LCD_PRINT_FAILE_PLAYER(3);
+  } else {
+    motor3(0);
   }
+  
   
   int p4_readValue = digitalRead(P4_BTN);
   if (p4_readValue == HIGH && speakValue == 1) {    // 4번 선수 탈락시 동작
-    Serial.println("FAILEP4");
+    Serial.println("FAILEP4");    
+    motor1(1);
+
     delay(500);
     digitalWrite(ledPin, HIGH);
     delay(1000);
     digitalWrite(ledPin, LOW);
     speakValue_p4_fail = 1;
     LCD_PRINT_FAILE_PLAYER(4);
-  } 
-
+  } else {
+    motor4(0);
+  }
+  
   speakValue = 0;
 }
 
@@ -204,4 +211,55 @@ void LCD_PRINT_FAILE_PLAYER(int number) {  // 탈락한 플레이어 출력
     lcd.print(number);
     lcd.setCursor(6, 1);
     lcd.print("FAILED");
+}
+
+void motor1(int sig) {
+  if (sig == 1) {
+    analogWrite(P1_MOTOR_A, 30);
+    analogWrite(P1_MOTOR_B, 0);
+  } else if (sig == 2) {
+    analogWrite(P1_MOTOR_A, 0);
+    analogWrite(P1_MOTOR_B, 30);
+  } else {
+    analogWrite(P1_MOTOR_A, 0);
+    analogWrite(P1_MOTOR_B, 0);
+  }
+}
+
+void motor2(int sig) {
+  if (sig == 1) {
+    analogWrite(P2_MOTOR_A, 30);
+    analogWrite(P2_MOTOR_B, 0);
+  } else if (sig == 2) {
+    analogWrite(P2_MOTOR_A, 0);
+    analogWrite(P2_MOTOR_B, 30);
+  } else {
+    analogWrite(P2_MOTOR_A, 0);
+    analogWrite(P2_MOTOR_B, 0);
+  }
+}
+void motor3(int sig) {
+  if (sig == 1) {
+    analogWrite(P3_MOTOR_A, 30);
+    analogWrite(P3_MOTOR_B, 0);
+  } else if (sig == 2) {
+    analogWrite(P3_MOTOR_A, 0);
+    analogWrite(P3_MOTOR_B, 30);
+  } else {
+    analogWrite(P3_MOTOR_A, 0);
+    analogWrite(P3_MOTOR_B, 0);
+  }
+}
+void motor4(int sig) {
+  if (sig == 1) {
+    analogWrite(P4_MOTOR_A, 30);
+    analogWrite(P4_MOTOR_B, 0);
+  } else if (sig == 2) {
+    analogWrite(P4_MOTOR_A, 0);
+    analogWrite(P4_MOTOR_B, 30);
+  }
+  else {
+    analogWrite(P4_MOTOR_A, 0);
+    analogWrite(P4_MOTOR_B, 0);
+  }
 }
