@@ -7370,3 +7370,19 @@ INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 16:58:10] "GET /score HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 16:58:12] "GET /score HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 16:58:14] "GET /score HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [07/Dec/2021 16:58:16] "GET /score HTTP/1.1" 200 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.123.223:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 325-058-778
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:09:37] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:09:53] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:09:59] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:05] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:13] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:24] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:27] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:37] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:44] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:53] "GET /player?player=p1&status=0 HTTP/1.1" 200 -

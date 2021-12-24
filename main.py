@@ -5,7 +5,7 @@ import requests
 # print('serial ' + serial.__version__)
 
 # Set a PORT Number & baud rate
-PORT = '/dev/cu.usbmodem142301'
+PORT = '/dev/cu.usbmodem14101'
 # PORT = 'COM4'
 BaudRate = 9600
 
