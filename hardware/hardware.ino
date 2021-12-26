@@ -21,7 +21,6 @@ void LCD_PRINT_TIME();
 // SCL A5
 LiquidCrystal_I2C lcd(0x27, 16, 2);   // LCD 주소 설정
 
-
 int min = 3, sec = 10; // LCD 타이머 기본 시간
 int playSpeak = 0;    // 영희 소리 신호 (0 재생 X, 1 재생 O)
 int angle = 0;          // 서보모터 각도
@@ -58,7 +57,6 @@ void setup() {
 
   randomSeed(analogRead(0));
 }
-
 
 void loop()
 {
@@ -121,58 +119,49 @@ void PLAYER_BTN_EVENT(int rate) {
     Serial.print("MOTOR");
     Serial.print(" angle180");
     Serial.println();
-
-  }
-
-//   if (p1_readValue == HIGH && speakValue == 1) { // 1번 선수 탈락시 동작
-//     Serial.println("FAILEP1");    // Serial에 출력
-//     delay(500);
-//     digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
-//     delay(1000);
-//     digitalWrite(ledPin, LOW);
-//     speakValue_p1_fail = 1;
-//     LCD_PRINT_FAILE_PLAYER(1);
-//   }
-
-  if (digitalRead(P1_BTN)==HIGH) {
-      Serial.println("p1");
-      analogWrite(P1_MOTOR_A, 180);
-      analogWrite(P1_MOTOR_A, 0);
-  }
-
-//  if (p2_readValue == HIGH && speakValue == 1) {    // 2번 선수 탈락시 동작
-//    Serial.println("FAILEP2");
-//    //    motor1(1);
-//    delay(500);
-//    digitalWrite(ledPin, HIGH);
-//    delay(1000);
-//    digitalWrite(ledPin, LOW);
-//    speakValue_p2_fail = 1;
-//    LCD_PRINT_FAILE_PLAYER(2);
-//  }
-
-  if (digitalRead(P2_BTN)==HIGH) {
-      Serial.println("p2");
-      analogWrite(P2_MOTOR_A, 180);
-      analogWrite(P2_MOTOR_A, 0);
-  }
-
-//  if (p3_readValue == HIGH && speakValue == 1) {    // 3번 선수 탈락시 동작
-//    Serial.println("FAILEP3");
-//    delay(500);
-//    digitalWrite(ledPin, HIGH);
-//    delay(1000);
-//    digitalWrite(ledPin, LOW);
-//    speakValue_p3_fail = 1;
-//    LCD_PRINT_FAILE_PLAYER(3);
-//  }
-
-  if (digitalRead(P3_BTN)==HIGH) {
-      Serial.println("p3");
-      analogWrite(P3_MOTOR_A, 180);
-      analogWrite(P3_MOTOR_A, 0);
   }
   
+  if (digitalRead(P1_BTN) == HIGH) {
+    Serial.println("p1");
+    analogWrite(P1_MOTOR_A, 180);
+    analogWrite(P1_MOTOR_A, 0);
+  } else if (digitalRead(P1_BTN) == HIGH && speakValue == 1) {
+    Serial.println("FAILEP1");    // Serial에 출력
+    delay(500);
+    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
+    delay(1000);
+    digitalWrite(ledPin, LOW);
+    speakValue_p1_fail = 1;
+    LCD_PRINT_FAILE_PLAYER(1);
+  }
+
+  if (digitalRead(P2_BTN)==HIGH) {
+    Serial.println("p2");
+    analogWrite(P2_MOTOR_A, 180);
+    analogWrite(P2_MOTOR_A, 0);
+  } else if (digitalRead(P2_BTN) == HIGH && speakValue == 1) {
+    Serial.println("FAILEP2");    // Serial에 출력
+    delay(500);
+    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
+    delay(1000);
+    digitalWrite(ledPin, LOW);
+    speakValue_p2_fail = 1;
+    LCD_PRINT_FAILE_PLAYER(2);
+  }
+
+  if (digitalRead(P3_BTN)==HIGH) {
+    Serial.println("p3");
+    analogWrite(P3_MOTOR_A, 180);
+    analogWrite(P3_MOTOR_A, 0);
+  } else if (digitalRead(P3_BTN) == HIGH && speakValue == 1) {
+    Serial.println("FAILEP3");    // Serial에 출력
+    delay(500);
+    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
+    delay(1000);
+    digitalWrite(ledPin, LOW);
+    speakValue_p3_fail = 1;
+    LCD_PRINT_FAILE_PLAYER(3);
+  }
   speakValue = 0;
 }
 
