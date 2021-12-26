@@ -75,11 +75,5 @@ while (True):
         response = requests.get('http://localhost/player?player=p3&status=0')
         response.status_code 
         response.text
-    elif  ReturnCode == 5:
-        print("4 번 탈락")
-        sound.play(des, "gun_effect", 1)
-        response = requests.get('http://localhost/player?player=p4&status=0')
-        response.status_code 
-        response.text
     else:
         print('false')

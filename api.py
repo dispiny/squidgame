@@ -18,7 +18,6 @@ def init_set_status():
     rd.set("p1", "2")
     rd.set("p2", "2")
     rd.set("p3", "2")
-    rd.set("p4", "2")
 
 def set_status(player, status):
     if player == 'p1':
@@ -27,14 +26,11 @@ def set_status(player, status):
         rd.set("p2", status)
     elif player == 'p3':
         rd.set("p3", status)
-    elif player == 'p4':
-        rd.set("p4", status)
     
 def get_status():
     p1 = rd.get("p1")
     p2 = rd.get("p2")
     p3 = rd.get("p3")
-    p4 = rd.get("p4")
 
     p_list = [str(p1.decode('ascii')), str(p2.decode('ascii')), str(p3.decode('ascii')), str(p4.decode('ascii'))]
 
@@ -74,15 +70,7 @@ def score():
     elif status[2] == '0':
         p3_st = '탈락'
 
-    if status[3] == '1':
-        p4_st = '성공'
-    elif status[3] == '2':
-        p4_st = '경기 중'
-    elif status[3] == '0':
-        p4_st = '탈락'
-
-    return render_template('score.html', p1=p1_st, p2=p2_st, p3=p3_st, p4=p4_st)
-    # , p1=status[0], p2=status[1], p3=status[2], p4=status[4]
+    return render_template('score.html', p1=p1_st, p2=p2_st, p3=p3_st)
 
 
 class PlayerStatus(Resource):

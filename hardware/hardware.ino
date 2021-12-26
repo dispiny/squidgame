@@ -6,7 +6,6 @@
 #define P1_BTN 8
 #define P2_BTN 9
 #define P3_BTN 10
-#define P4_BTN 11
 #define ledPin 13
 #define P1_MOTOR_A 2
 #define P1_MOTOR_B 3
@@ -14,8 +13,6 @@
 #define P2_MOTOR_B 5
 #define P3_MOTOR_A 6
 #define P3_MOTOR_B 7
-#define P4_MOTOR_A 0
-#define P4_MOTOR_B 1
 #define SERVO_PIN 12
 
 Servo servo;      // Servo 클래스로 servo라는 Object 생성
@@ -44,7 +41,6 @@ void setup() {
   pinMode(P1_BTN, INPUT);     // 2번 핀 입력모드
   pinMode(P2_BTN, INPUT);     // 3번 핀 입력모드
   pinMode(P3_BTN, INPUT);     // 4번 핀 입력모드
-  pinMode(P4_BTN, INPUT);     // 5번 핀 입력모드
 
   Serial.begin(9600); // 시리얼 통신 시작
 
@@ -93,7 +89,7 @@ void loop()
 void PLAYER_BTN_EVENT(int rate) {
   int speakValue;
 
-  int speakValue_p1_fail = 0;   // Player 1~4 생존여부
+  int speakValue_p1_fail = 0;   // Player 1~3 생존여부
   int speakValue_p2_fail = 0;
   int speakValue_p3_fail = 0;
 
@@ -128,62 +124,55 @@ void PLAYER_BTN_EVENT(int rate) {
 
   }
 
-  int p1_readValue = digitalRead(P1_BTN);
-  if (digitalRead(P1_BTN) == HIGH ) {
-    analogWrite(P1_MOTOR_A, 30);
-    analogWrite(P1_MOTOR_B, 0);
-  } else if (digitalRead(P1_BTN) == LOW ) {
-    analogWrite(P1_MOTOR_A, 0);
-    analogWrite(P1_MOTOR_B, 0);
-  }
-  if (p1_readValue == HIGH && speakValue == 1) { // 1번 선수 탈락시 동작
-    Serial.println("FAILEP1");    // Serial에 출력
-    delay(500);
-    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    speakValue_p1_fail = 1;
-    LCD_PRINT_FAILE_PLAYER(1);
+//   if (p1_readValue == HIGH && speakValue == 1) { // 1번 선수 탈락시 동작
+//     Serial.println("FAILEP1");    // Serial에 출력
+//     delay(500);
+//     digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
+//     delay(1000);
+//     digitalWrite(ledPin, LOW);
+//     speakValue_p1_fail = 1;
+//     LCD_PRINT_FAILE_PLAYER(1);
+//   }
+
+  if (digitalRead(P1_BTN)==HIGH) {
+      Serial.println("p1");
+      analogWrite(P1_MOTOR_A, 180);
+      analogWrite(P1_MOTOR_A, 0);
   }
 
-  int p2_readValue = digitalRead(P2_BTN);
-  if (digitalRead(P2_BTN) == HIGH ) {
-    analogWrite(P2_MOTOR_A, 30);
-    analogWrite(P2_MOTOR_B, 0);
-  } else if (digitalRead(P1_BTN) == LOW ) {
-    analogWrite(P2_MOTOR_A, 0);
-    analogWrite(P2_MOTOR_B, 0);
-  }
-  if (p2_readValue == HIGH && speakValue == 1) {    // 2번 선수 탈락시 동작
-    Serial.println("FAILEP2");
-    //    motor1(1);
-    delay(500);
-    digitalWrite(ledPin, HIGH);
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    speakValue_p2_fail = 1;
-    LCD_PRINT_FAILE_PLAYER(2);
+//  if (p2_readValue == HIGH && speakValue == 1) {    // 2번 선수 탈락시 동작
+//    Serial.println("FAILEP2");
+//    //    motor1(1);
+//    delay(500);
+//    digitalWrite(ledPin, HIGH);
+//    delay(1000);
+//    digitalWrite(ledPin, LOW);
+//    speakValue_p2_fail = 1;
+//    LCD_PRINT_FAILE_PLAYER(2);
+//  }
+
+  if (digitalRead(P2_BTN)==HIGH) {
+      Serial.println("p2");
+      analogWrite(P2_MOTOR_A, 180);
+      analogWrite(P2_MOTOR_A, 0);
   }
 
-  int p3_readValue = digitalRead(P3_BTN);
-  if (digitalRead(P3_BTN) == HIGH ) {
-    analogWrite(P3_MOTOR_A, 30);
-    analogWrite(P3_MOTOR_B, 0);
-  } else if (digitalRead(P1_BTN) == LOW ) {
-    analogWrite(P3_MOTOR_A, 0);
-    analogWrite(P3_MOTOR_B, 0);
+//  if (p3_readValue == HIGH && speakValue == 1) {    // 3번 선수 탈락시 동작
+//    Serial.println("FAILEP3");
+//    delay(500);
+//    digitalWrite(ledPin, HIGH);
+//    delay(1000);
+//    digitalWrite(ledPin, LOW);
+//    speakValue_p3_fail = 1;
+//    LCD_PRINT_FAILE_PLAYER(3);
+//  }
+
+  if (digitalRead(P3_BTN)==HIGH) {
+      Serial.println("p3");
+      analogWrite(P3_MOTOR_A, 180);
+      analogWrite(P3_MOTOR_A, 0);
   }
   
-  if (p3_readValue == HIGH && speakValue == 1) {    // 3번 선수 탈락시 동작
-    Serial.println("FAILEP3");
-    delay(500);
-    digitalWrite(ledPin, HIGH);
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    speakValue_p3_fail = 1;
-    LCD_PRINT_FAILE_PLAYER(3);
-  }
-
   speakValue = 0;
 }
 
