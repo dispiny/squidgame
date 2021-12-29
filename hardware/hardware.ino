@@ -134,6 +134,10 @@ void PLAYER_BTN_EVENT(int rate) {
     digitalWrite(P1_MOTOR_A, HIGH);
     digitalWrite(P1_MOTOR_B, LOW);
     analogWrite(P1_MOTOR_ENA, 40);
+  } else if (digitalRead(P1_BTN) == LOW) {
+    digitalWrite(P1_MOTOR_A, LOW);
+    digitalWrite(P1_MOTOR_B, HIGH);
+    analogWrite(P1_MOTOR_B, 20);
   }
   if (p1Status == HIGH && speakValue == 1) {
     Serial.println("FAILEP1");    // Serial에 출력
@@ -152,6 +156,10 @@ void PLAYER_BTN_EVENT(int rate) {
     digitalWrite(P2_MOTOR_A, HIGH);
     digitalWrite(P2_MOTOR_B, LOW);
     analogWrite(P2_MOTOR_ENA, 60);
+  } else if (digitalRead(P2_BTN) == LOW) {
+    digitalWrite(P2_MOTOR_A, LOW);
+    digitalWrite(P2_MOTOR_B, HIGH);
+    analogWrite(P2_MOTOR_B, 20);
   }
   if (p2Status == HIGH && speakValue == 1) {
     Serial.println("FAILEP2");    // Serial에 출력
