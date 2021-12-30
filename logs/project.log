@@ -7386,3 +7386,133 @@ INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:27] "GET /player?player=p1&status
 INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:37] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:44] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [24/Dec/2021 10:10:53] "GET /player?player=p1&status=0 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 13:58:19] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:00:06] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:00:29] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:01:08] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:04:07] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\sysop\\Documents\\Projects\\main.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:12:51] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:14:08] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:15:54] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:17:24] "[35m[1mGET /init HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 740-340-213
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.0.40:80/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2021 14:32:26] "[35m[1mGET /init HTTP/1.1[0m" 500 -

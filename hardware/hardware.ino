@@ -1,65 +1,60 @@
-#include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-#include <Stepper.h>
 #include <Servo.h>
+#include <Wire.h>
+#include <Stepper.h>
 
-#define P1_BTN 8
-#define P2_BTN 9
+#define SUCCESS_BTN_A 13
+#define SUCCESS_BTN_B 12
+#define FAILED_BTN_A 11
+#define FAILED_BTN_B 10
+#define LED1 9
+#define LED2 8
+#define LED3 7
+#define LED4 6
+#define LED5 5
+#define SERVO_PIN 3
 
-#define ledPin 13
-
-#define P1_MOTOR_A 2
-#define P1_MOTOR_ENA 3
-#define P1_MOTOR_B 4
-
-#define P2_MOTOR_A 5
-#define P2_MOTOR_ENA 6
-#define P2_MOTOR_B 7
-
-#define SERVO_PIN 12
-
-Servo servo;      // Servo 클래스로 servo라는 Object 생성
-
-void LCD_PRINT_TIME();
-// SCL A5
 LiquidCrystal_I2C lcd(0x27, 16, 2);   // LCD 주소 설정
+Servo servo;
 
-int min = 3, sec = 10; // LCD 타이머 기본 시간
-int playSpeak = 0;    // 영희 소리 신호 (0 재생 X, 1 재생 O)
-int angle = 0;          // 서보모터 각도
-
-long rate;
-
+int min = 3, sec = 10;
 char ch = ':';
 
-////////////////////////////////////////
+boolean new_success_a = LOW;
+boolean new_success_b = LOW;
+boolean new_failed_a = LOW;
+boolean new_failed_b = LOW;
+boolean old_success_a = LOW;
+boolean old_success_b = LOW;
+boolean old_failed_a = LOW;
+boolean old_failed_b = LOW;
+long rate;
+
 unsigned long LCDpreviousMillis = 0;   // LCD의 상태가 업데이트된 시간을 기록할 변수
 unsigned long ServopreviousMillis = 0;    // 서보모터의 상태가 업데이트된 시간을 기록할 변수
-////////////////////////////////////////
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
 
-  pinMode(P1_BTN, INPUT);     // 2번 핀 입력모드
-  pinMode(P2_BTN, INPUT);     // 3번 핀 입력모드
-  pinMode(4, OUTPUT);
-  pinMode(P1_MOTOR_A, OUTPUT);
-  pinMode(P2_MOTOR_A, OUTPUT);
-  pinMode(P2_MOTOR_B, OUTPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  pinMode(FAILED_BTN_A, INPUT);
+  pinMode(FAILED_BTN_B, INPUT);
+  pinMode(SUCCESS_BTN_A, INPUT);
+  pinMode(SUCCESS_BTN_B, INPUT);
 
+  servo.attach(SERVO_PIN);
+  servo.write(0);
 
-  Serial.begin(9600); // 시리얼 통신 시작
-
-  lcd.begin();    // LCD의 크기를 설정한다.
+  lcd.begin();
   lcd.backlight();
 
-  servo.attach(SERVO_PIN);    // 서보모터 사용
-  servo.write(0);   // 서보모터 위치 초기화
-
-  lcd.clear();    // LCD 화면 클리어
+  lcd.clear();
   lcd.setCursor(3, 0);
-  lcd.print("WARMING UP");    // 게임 준비 화며
-  // delay(9000);    // 9초 대기
+  lcd.print("WARMING UP");
+  delay(9000);
   lcd.clear();
 
   randomSeed(analogRead(0));
@@ -67,7 +62,7 @@ void setup() {
 
 void loop()
 {
-  unsigned long currentMillis = millis();   // ㅅmills 함수사용할 때 현재 값 저장
+  unsigned long currentMillis = millis();   // mills 함수사용할 때 현재 값 저장
   rate = random(2, 5);    // 영희 소리 배속 (랜덤)
 
   if (currentMillis - LCDpreviousMillis >= 1000) {    // LCD 타이머
@@ -87,15 +82,15 @@ void loop()
       LCD_PRINT_TIME(sec, min);
     }
   }
-  PLAYER_BTN_EVENT(rate);   // 플레이어의 이동 동작
+  PLAYER_BTN_EVENT(rate);
 }
+
 
 void PLAYER_BTN_EVENT(int rate) {
   int speakValue;
 
   int speakValue_p1_fail = 0;   // Player 1~3 생존여부
   int speakValue_p2_fail = 0;
-  int speakValue_p3_fail = 0;
 
   unsigned long currentMillis = millis();
 
@@ -113,63 +108,43 @@ void PLAYER_BTN_EVENT(int rate) {
     Serial.print(rate);
     Serial.println();
 
-    if ((rate * 1000) == 4000) {
-      delay(1250);
-    } else if ((rate * 1000) == 3000) {
-      delay(1666);
-    } else if ((rate * 1000) == 2000) {
-      delay(2500);
-    }
-
     servo.write(180);     // 서보모터 회전
     Serial.print("MOTOR");
     Serial.print(" angle180");
     Serial.println();
   }
-  int p1Status = digitalRead(P1_BTN);
-  if (digitalRead(P1_BTN) == HIGH) {
-    Serial.println("p1");
-    Serial.print("p1Status: ");
-    Serial.println(p1Status);
-    digitalWrite(P1_MOTOR_A, HIGH);
-    digitalWrite(P1_MOTOR_B, LOW);
-    analogWrite(P1_MOTOR_ENA, 40);
-  } else if (digitalRead(P1_BTN) == LOW) {
-    digitalWrite(P1_MOTOR_A, LOW);
-    digitalWrite(P1_MOTOR_B, HIGH);
-    analogWrite(P1_MOTOR_B, 20);
+  
+  
+  new_success_a = digitalRead(SUCCESS_BTN_A);
+  if (old_success_a == LOW && new_success_a == HIGH) {
+    Serial.println("CSUCCESSP4");
+    SUCCESS_LED();
   }
-  if (p1Status == HIGH && speakValue == 1) {
-    Serial.println("FAILEP1");    // Serial에 출력
-    delay(500);
-    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    speakValue_p1_fail = 1;
-    LCD_PRINT_FAILE_PLAYER(1);
+
+  old_success_a = new_success_a;
+  
+  new_success_b = digitalRead(SUCCESS_BTN_B);
+  if (old_success_b == LOW && new_success_b == HIGH) {
+    Serial.println("CSUCCESSP5");
+    SUCCESS_LED();
   }
-  int p2Status = digitalRead(P2_BTN);
-  if (digitalRead(P2_BTN) == HIGH) {
-    Serial.println("p2");
-    Serial.print("p2Status: ");
-    Serial.println(p2Status);
-    digitalWrite(P2_MOTOR_A, HIGH);
-    digitalWrite(P2_MOTOR_B, LOW);
-    analogWrite(P2_MOTOR_ENA, 60);
-  } else if (digitalRead(P2_BTN) == LOW) {
-    digitalWrite(P2_MOTOR_A, LOW);
-    digitalWrite(P2_MOTOR_B, HIGH);
-    analogWrite(P2_MOTOR_B, 20);
+
+  old_success_b = new_success_b;
+
+  new_failed_a = digitalRead(FAILED_BTN_A);
+  if (old_failed_a == LOW && new_failed_a == HIGH) {
+    Serial.println("FAILEP1");
   }
-  if (p2Status == HIGH && speakValue == 1) {
-    Serial.println("FAILEP2");    // Serial에 출력
-    delay(500);
-    digitalWrite(ledPin, HIGH);   // LED 켜고 1초뒤 종료
-    delay(1000);
-    digitalWrite(ledPin, LOW);
-    speakValue_p2_fail = 1;
-    LCD_PRINT_FAILE_PLAYER(2);
+
+  old_failed_a = new_failed_a;
+
+  new_failed_b = digitalRead(FAILED_BTN_B);
+  if (old_failed_b == LOW && new_failed_b == HIGH) {
+    Serial.println("FAILEP2");
   }
+
+  old_failed_b = new_failed_b;
+
   speakValue = 0;
 }
 
@@ -193,4 +168,19 @@ void LCD_PRINT_FAILE_PLAYER(int number) {  // 탈락한 플레이어 출력
   lcd.print(number);
   lcd.setCursor(6, 1);
   lcd.print("FAILED");
+}
+
+void SUCCESS_LED() {
+  digitalWrite(LED1, HIGH);
+  digitalWrite(LED2, HIGH);
+  digitalWrite(LED3, HIGH);
+  digitalWrite(LED4, HIGH);
+  digitalWrite(LED5, HIGH);
+  delay(100);
+  digitalWrite(LED1, LOW);
+  digitalWrite(LED2, LOW);
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
+  digitalWrite(LED5, LOW);
+  delay(100);
 }

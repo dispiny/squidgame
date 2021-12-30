@@ -1,12 +1,12 @@
-from modules.sound import sound
+# from modules.sound import sound
 import serial
 import requests
 
 # print('serial ' + serial.__version__)
 
 # Set a PORT Number & baud rate
-PORT = '/dev/cu.usbmodem14101'
-# PORT = 'COM4'
+# PORT = '/dev/cu.usbmodem14101'
+PORT = 'COM7'
 BaudRate = 9600
 
 ARD= serial.Serial(PORT,BaudRate)
@@ -23,6 +23,12 @@ def Decode(A):
         else : 
             print ("Error_lack of number _ %d" %len(A))
             return 0
+
+    if A[0]=='C':
+        if (len(A)==12):                # 문자열 갯수 검사 CSUCCESSP1
+            SuccessPlayer=int(A[9])
+            result = SuccessPlayer
+            return SuccessPlayer
 
     if A[0]=='F':
         if (len(A)==9):                #문자열 갯수 검사 FAILEP1
@@ -45,7 +51,7 @@ def Ardread(): # return list [Ard1,Ard2]
         print("읽기 실패 from _Ardread_")
 
 
-sound.copy_file()
+# sound.copy_file()
 response = requests.get('http://localhost/init')
 response.status_code 
 response.text
@@ -56,24 +62,30 @@ while (True):
     des = "/tmp/squid/effect/"
     print(ReturnCode)
     if ReturnCode > 9:
-        doll_re = sound.play(des, "doll_sound", ReturnCode-9)
+        # doll_re = sound.play(des, "doll_sound", ReturnCode-9)
+        pass
     elif  ReturnCode == 2:
         print("1 번 탈락")
-        sound.play(des, "gun_effect", 1)
-        response = requests.get('http://localhost/player?player=p1&status=0')
-        response.status_code 
-        response.text
+        # sound.play(des, "gun_effect", 1)
+        # response = requests.get('http://localhost/player?player=p1&status=0')
+        # response.status_code 
+        # response.text
     elif  ReturnCode == 3:
         print("2 번 탈락")
-        sound.play(des, "gun_effect", 1)
-        response = requests.get('http://localhost/player?player=p2&status=0')
-        response.status_code 
-        response.text
-    elif  ReturnCode == 4:
-        print("3 번 탈락")
-        sound.play(des, "gun_effect", 1)
-        response = requests.get('http://localhost/player?player=p3&status=0')
-        response.status_code 
-        response.text
+        # sound.play(des, "gun_effect", 1)
+        # response = requests.get('http://localhost/player?player=p2&status=0')
+        # response.status_code 
+        # response.text
+    elif ReturnCode == 4:
+        print("1번 성공")
+        # response = requests.get('http://localhost/player?player=p1&status=1')
+        # response.status_code 
+        # response.text
+    elif ReturnCode == 5:
+        print("2번 성공")
+        # response = requests.get('http://localhost/player?player=p2&status=1')
+        # response.status_code 
+        # response.text
     else:
         print('false')
+    

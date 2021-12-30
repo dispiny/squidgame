@@ -17,22 +17,18 @@ rd = redis.StrictRedis(host='localhost', port=6379, db=0, password='Skill39')
 def init_set_status():
     rd.set("p1", "2")
     rd.set("p2", "2")
-    rd.set("p3", "2")
 
 def set_status(player, status):
     if player == 'p1':
         rd.set("p1", status)
     elif player == 'p2':
         rd.set("p2", status)
-    elif player == 'p3':
-        rd.set("p3", status)
     
 def get_status():
     p1 = rd.get("p1")
     p2 = rd.get("p2")
-    p3 = rd.get("p3")
 
-    p_list = [str(p1.decode('ascii')), str(p2.decode('ascii')), str(p3.decode('ascii')), str(p4.decode('ascii'))]
+    p_list = [str(p1.decode('ascii')), str(p2.decode('ascii'))]
 
     return p_list
 
@@ -63,14 +59,7 @@ def score():
     elif status[1] == '0':
         p2_st = '탈락'
 
-    if status[2] == '1':
-        p3_st = '성공'
-    elif status[2] == '2':
-        p3_st = '경기 중'
-    elif status[2] == '0':
-        p3_st = '탈락'
-
-    return render_template('score.html', p1=p1_st, p2=p2_st, p3=p3_st)
+    return render_template('score.html', p1=p1_st, p2=p2_st)
 
 
 class PlayerStatus(Resource):
