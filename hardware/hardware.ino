@@ -65,6 +65,11 @@ void loop()
   unsigned long currentMillis = millis();   // mills 함수사용할 때 현재 값 저장
   rate = random(2, 5);    // 영희 소리 배속 (랜덤)
 
+  Serial.print("MOTOR");
+  Serial.print(" angle0");
+  Serial.println();
+  servo.write(0);
+
   if (currentMillis - LCDpreviousMillis >= 1000) {    // LCD 타이머
     LCDpreviousMillis = currentMillis;
     if (sec == 0 && min == 0) {
@@ -91,19 +96,14 @@ void PLAYER_BTN_EVENT(int rate) {
   if (currentMillis - ServopreviousMillis >= 10000) {
     ServopreviousMillis = currentMillis;
 
-    Serial.print("MOTOR");
-    Serial.print(" angle0");
-    servo.write(0);
-    Serial.println();
-
     Serial.print("SPEAK");
     Serial.print(rate);
     Serial.println();
     
     Serial.print("MOTOR");
     Serial.print(" angle180");
-    servo.write(180);     // 서보모터 회전
     Serial.println();
+    servo.write(180);     // 서보모터 회전
   }
     
   new_success_a = digitalRead(SUCCESS_BTN_A);
