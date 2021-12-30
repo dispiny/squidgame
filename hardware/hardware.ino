@@ -12,7 +12,7 @@
 #define LED3 7
 #define LED4 6
 #define LED5 5
-#define SERVO_PIN 3
+#define SERVO_PIN 4
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);   // LCD 주소 설정
 Servo servo;
