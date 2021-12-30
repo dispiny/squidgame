@@ -85,67 +85,52 @@ void loop()
   PLAYER_BTN_EVENT(rate);
 }
 
-
 void PLAYER_BTN_EVENT(int rate) {
-  int speakValue;
-
-  int speakValue_p1_fail = 0;   // Player 1~3 생존여부
-  int speakValue_p2_fail = 0;
-
   unsigned long currentMillis = millis();
 
   if (currentMillis - ServopreviousMillis >= 10000) {
     ServopreviousMillis = currentMillis;
 
-    speakValue = 1;
-
     Serial.print("MOTOR");
-    servo.write(0);
     Serial.print(" angle0");
+    servo.write(0);
     Serial.println();
 
     Serial.print("SPEAK");
     Serial.print(rate);
     Serial.println();
-
-    servo.write(180);     // 서보모터 회전
+    
     Serial.print("MOTOR");
     Serial.print(" angle180");
+    servo.write(180);     // 서보모터 회전
     Serial.println();
   }
-  
-  
+    
   new_success_a = digitalRead(SUCCESS_BTN_A);
   if (old_success_a == LOW && new_success_a == HIGH) {
     Serial.println("CSUCCESSP4");
-    SUCCESS_LED();
   }
-
   old_success_a = new_success_a;
   
   new_success_b = digitalRead(SUCCESS_BTN_B);
   if (old_success_b == LOW && new_success_b == HIGH) {
     Serial.println("CSUCCESSP5");
-    SUCCESS_LED();
   }
-
   old_success_b = new_success_b;
 
   new_failed_a = digitalRead(FAILED_BTN_A);
   if (old_failed_a == LOW && new_failed_a == HIGH) {
     Serial.println("FAILEP1");
+    SUCCESS_LED();
   }
-
   old_failed_a = new_failed_a;
 
   new_failed_b = digitalRead(FAILED_BTN_B);
   if (old_failed_b == LOW && new_failed_b == HIGH) {
     Serial.println("FAILEP2");
+    SUCCESS_LED();
   }
-
   old_failed_b = new_failed_b;
-
-  speakValue = 0;
 }
 
 void LCD_PRINT_TIME(int sec, int min) {
