@@ -3,10 +3,10 @@
 #include <Wire.h>
 #include <Stepper.h>
 
-#define SUCCESS_BTN_A 13
-#define SUCCESS_BTN_B 12
-#define FAILED_BTN_A 11
-#define FAILED_BTN_B 10
+#define SUCCESS_BTN_A 11
+#define SUCCESS_BTN_B 10
+#define FAILED_BTN_A 13
+#define FAILED_BTN_B 12
 #define LED1 9
 #define LED2 8
 #define LED3 7
@@ -20,14 +20,15 @@ Servo servo;
 int min = 3, sec = 10;
 char ch = ':';
 
-boolean new_success_a = LOW;
-boolean new_success_b = LOW;
-boolean new_failed_a = LOW;
-boolean new_failed_b = LOW;
-boolean old_success_a = LOW;
-boolean old_success_b = LOW;
-boolean old_failed_a = LOW;
-boolean old_failed_b = LOW;
+int new_success_a = 1;
+int new_success_b = 1;
+int new_failed_a = 1;
+int new_failed_b = 1;
+int old_success_a = 1;
+int old_success_b = 1;
+int old_failed_a = 1;
+int old_failed_b = 1;
+
 long rate;
 
 unsigned long LCDpreviousMillis = 0;   // LCD의 상태가 업데이트된 시간을 기록할 변수
@@ -61,14 +62,9 @@ void setup() {
 }
 
 void loop()
-{
+{  
   unsigned long currentMillis = millis();   // mills 함수사용할 때 현재 값 저장
   rate = random(2, 5);    // 영희 소리 배속 (랜덤)
-
-  Serial.print("MOTOR");
-  Serial.print(" angle0");
-  Serial.println();
-  servo.write(0);
 
   if (currentMillis - LCDpreviousMillis >= 1000) {    // LCD 타이머
     LCDpreviousMillis = currentMillis;
@@ -95,6 +91,19 @@ void PLAYER_BTN_EVENT(int rate) {
 
   if (currentMillis - ServopreviousMillis >= 10000) {
     ServopreviousMillis = currentMillis;
+    
+    Serial.print("MOTOR");
+    Serial.print(" angle0");
+    Serial.println();
+    servo.write(0);    
+    
+    if ((rate * 1000) == 4000) {
+      delay(1250);  
+    } else if ((rate * 1000) == 3000) {
+      delay(1666);
+    } else if ((rate * 1000) == 2000) {
+      delay(2500);
+    }
 
     Serial.print("SPEAK");
     Serial.print(rate);
@@ -107,28 +116,30 @@ void PLAYER_BTN_EVENT(int rate) {
   }
     
   new_success_a = digitalRead(SUCCESS_BTN_A);
-  if (old_success_a == LOW && new_success_a == HIGH) {
+  if (old_success_a == 0 && new_success_a == 1) {
     Serial.println("CSUCCESSP4");
   }
   old_success_a = new_success_a;
   
   new_success_b = digitalRead(SUCCESS_BTN_B);
-  if (old_success_b == LOW && new_success_b == HIGH) {
+  if (old_success_b == 0 && new_success_b == 1) {
     Serial.println("CSUCCESSP5");
   }
   old_success_b = new_success_b;
 
   new_failed_a = digitalRead(FAILED_BTN_A);
-  if (old_failed_a == LOW && new_failed_a == HIGH) {
+  if (new_failed_a == 1 && old_failed_a == 0) {
     Serial.println("FAILEP1");
     SUCCESS_LED();
+    LCD_PRINT_FAILE_PLAYER(1);
   }
   old_failed_a = new_failed_a;
 
   new_failed_b = digitalRead(FAILED_BTN_B);
-  if (old_failed_b == LOW && new_failed_b == HIGH) {
+  if (old_failed_b == 0 && new_failed_b == 1) {
     Serial.println("FAILEP2");
     SUCCESS_LED();
+    LCD_PRINT_FAILE_PLAYER(2);
   }
   old_failed_b = new_failed_b;
 }
